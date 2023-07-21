@@ -6,27 +6,45 @@ toggleFormBtn.addEventListener('click', () => {
   gistForm.classList.toggle('hidden');
 });
 
-// Sample data for gists (Replace this with actual data from your API)
-const gists = [
-  { name: 'Gist 1', description: 'Description for Gist 1', content: 'Content of Gist 1' },
-  { name: 'Gist 2', description: 'Description for Gist 2', content: 'Content of Gist 2' },
-  { name: 'Gist 3', description: 'Description for Gist 3', content: 'Content of Gist 3' },
-];
+fetch('http://localhost:3000/snippets')
+.then(resp=>resp.json())
+.then(snippets=>renderGists(snippets))
 
 // Function to render the gists
-function renderGists() {
+function renderGists(gists) {
   gistList.innerHTML = ''; // Clear the existing list
 
   gists.forEach((gist) => {
     const li = document.createElement('li');
     li.innerHTML = `
-      <h3>${gist.name}</h3>
+      <h3>${gist.title}</h3>
       <p>${gist.description}</p>
-      <pre>${gist.content}</pre>
+      <code contenteditable="true" spellcheck="false">${gist.code}</code>
+      <p></p>
+      <span style="
+        background-color: #D9A21B;
+        width: auto;
+        border: 1px solid black;
+        padding: 0.5px;
+        "
+      >${gist.tags}</span>
+      
+      <span style="
+        background-color: #D9A21B;
+        width: auto;
+        border: 1px solid black;
+        padding: 0.5px;
+        "
+      >${gist.language}</span>
     `;
+
     gistList.appendChild(li);
   });
 }
 
 // Call the function to render the gists
-renderGists();
+// renderGists();
+//#E1F1FF
+//#7CACF9
+//#4078C0
+//#D9A21B

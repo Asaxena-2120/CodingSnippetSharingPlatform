@@ -12,7 +12,7 @@
       <h1 class="logo">Gist Clone</h1>
       <ul class="nav-links">
         <li><a href="#">Explore</a></li>
-        <li><a href="#">Gist</a></li>
+        <li><a href="#gists-container">Gist</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Sign In</a></li>
       </ul>
@@ -22,21 +22,37 @@
   <div class="container">
     <button id="toggleFormBtn">Create Gist</button>
     <form class="gist-form hidden" id="gistForm">
-      <label for="gistName">Gist Name</label>
-      <input type="text" id="gistName" name="gistName" required>
+      <label for="gistTitle">Gist Title</label>
+      <input type="text" id="gistTitle" name="gistTitle" required>
 
       <label for="gistDescription">Description</label>
       <input type="text" id="gistDescription" name="gistDescription" required>
 
-      <label for="gistContent">Gist Content</label>
-      <textarea id="gistContent" name="gistContent" rows="8" required></textarea>
+      <label for="gistCode">Code</label>
+      <textarea type="text" id="gistCode" name="gistCode" rows="8" required></textarea>
+
+      <label for="gistLanguage">Gist Language</label>
+      <input id="gistLanguage" name="gistLanguage"  required></input>
+
+      <label for="gistTags">Gist Tags</label>
+      <select data-placeholder="Begin typing a tag to filter..." multiple name="test">
+        <option value=""></option>
+        <option>Python</option>
+        <option>Javascript</option>
+        <option>Coding</option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>Flask</option>
+        <option>BackEnd</option>
+        <option>FrontEnd</option>
+      </select>
 
       <button type="submit">Create Gist</button>
     </form>
-
-    <ul class="gist-list" id="gistList">
-      <!-- List of gists will be dynamically added here -->
-    </ul>
+    <h2 id="gists-container">All gists</h2>
+      <ul class="gist-list" id="gistList">
+        <!-- List of gists will be dynamically added here -->
+      </ul>
   </div>
 
   <script src="index.js"></script>

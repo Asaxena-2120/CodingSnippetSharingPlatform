@@ -8,7 +8,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #478a1a;
+  background-color: #D9A21B;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
@@ -24,7 +24,7 @@ body {
 
 .navbar {
   background-color: #333;
-  color: #0e80b8;
+  color: #000000;
   padding: 15px 0;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .nav-links a {
-  color: #9e2c2c;
+  color: #4078C0;
   text-decoration: none;
   font-size: 16px;
 }
@@ -113,4 +113,9 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+code {
+  display: block;
+  background-color: white;
 }
