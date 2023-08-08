@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="stylesheet" href="styles.css">
+  
+
   <title>Gist Clone</title>
 </head>
 <body>
@@ -11,10 +14,9 @@
     <div class="container-nav">
       <h1 class="logo">Gist Clone</h1>
       <ul class="nav-links">
-        <li><a href="#">Explore</a></li>
-        <li><a href="#gists-container">Gist</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Sign In</a></li>
+        
+        <li><a href="#gists-container">Gists</a></li>
+        
       </ul>
     </div>
   </nav>
@@ -26,7 +28,7 @@
       <input type="text" id="gistTitle" name="gistTitle" required>
 
       <label for="gistDescription">Description</label>
-      <input type="text" id="gistDescription" name="gistDescription" required>
+      <input type="text" id="gistDescription" name="gistDescription" >
 
       <label for="gistCode">Code</label>
       <textarea type="text" id="gistCode" name="gistCode" rows="8" required></textarea>
@@ -52,6 +54,8 @@
     <h2 id="gists-container">All gists</h2>
       <ul class="gist-list" id="gistList">
         <!-- List of gists will be dynamically added here -->
+        
+        
       </ul>
   </div>
 

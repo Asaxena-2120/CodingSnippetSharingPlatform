@@ -107,6 +107,13 @@ button:hover {
   background-color: #f9f9f9;
 }
 
+.span{
+  background-color: #D9A21B;
+  width: auto;
+  border: 1px solid black;
+  padding: 5px;
+}
+
 .gist-list li:last-child {
   margin-bottom: 0;
 }
