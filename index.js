@@ -1,19 +1,25 @@
 const toggleFormBtn = document.getElementById('toggleFormBtn');
 const gistForm = document.getElementById('gistForm');
 const gistList = document.getElementById('gistList');
+const searchInput = document.getElementById('search');
 
-  toggleFormBtn.addEventListener('click', () => {
-    gistForm.classList.toggle('hidden');
-  });
+const searchForm = document.getElementById('search-form');
+let gists =''
 
-
+toggleFormBtn.addEventListener('click', () => {
+  gistForm.classList.toggle('hidden');
+});
 
 fetch('http://localhost:3000/snippets')
 .then(resp=>resp.json())
-.then(snippets=>renderGists(snippets))
+.then(snippets=>{
+  renderGists(snippets);
+  gists=snippets;
+})
 
 gistForm.addEventListener('submit', (e)=>{
-  e.preventDefault()
+  e.preventDefault();
+
   fetch('http://localhost:3000/snippets',{
     method: 'POST',
     headers: {
@@ -25,22 +31,19 @@ gistForm.addEventListener('submit', (e)=>{
       description: e.target.gistDescription.value,
       code: e.target.gistCode.value,
       language: e.target.gistLanguage.value,
-      tags: ["javascript", "math"]
+      tags: [...(e.target.test).options].filter(option => option.selected).map(option => option.value)
     })
   })
   .then(response=>response.json())
   .then(((data)=>
     
     {renderGist(data);
-      
       gistForm.classList.toggle('hidden');
     }))
 })
 
 // Function to render the gists
 function renderGists(gists) {
-  //gistList.innerHTML = ''; // Clear the existing list
-
   gists.forEach((gist) => {
     renderGist(gist)
   });
@@ -85,8 +88,17 @@ function renderGist(gist){
   
   
   gistList.appendChild(li);
-  gistForm.reset()
+  gistForm.reset() //reset form 
    
 
 }
+
+searchInput.addEventListener("input", (e) => {
+
+  filtered_gists = gists.filter((gist)=> gist.tags.includes(e.target.value))
+  gistList.innerHTML=''
+  renderGists(filtered_gists)
+})
+
+
 

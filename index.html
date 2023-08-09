@@ -7,24 +7,26 @@
   <link rel="stylesheet" href="styles.css">
   
 
-  <title>Gist Clone</title>
+  <title>Snippet Container</title>
 </head>
 <body>
   <nav class="navbar">
     <div class="container-nav">
-      <h1 class="logo">Gist Clone</h1>
+      <h1 class="logo">Snippet Container</h1>
       <ul class="nav-links">
-        
-        <li><a href="#gists-container">Gists</a></li>
-        
+        <li>
+            <form class="search-form">
+                <input id="search" type="text"  placeholder="search by tag..."/>
+            </form>
+        </li>
       </ul>
     </div>
   </nav>
 
   <div class="container">
-    <button id="toggleFormBtn">Create Gist</button>
+    <button id="toggleFormBtn">Create Snippet</button>
     <form class="gist-form hidden" id="gistForm">
-      <label for="gistTitle">Gist Title</label>
+      <label for="gistTitle">Snippet Title</label>
       <input type="text" id="gistTitle" name="gistTitle" required>
 
       <label for="gistDescription">Description</label>
@@ -33,29 +35,30 @@
       <label for="gistCode">Code</label>
       <textarea type="text" id="gistCode" name="gistCode" rows="8" required></textarea>
 
-      <label for="gistLanguage">Gist Language</label>
+      <label for="gistLanguage">Snippet Language</label>
       <input id="gistLanguage" name="gistLanguage"  required></input>
 
-      <label for="gistTags">Gist Tags</label>
+      <label for="gistTags">Snippet Tags</label>
+      <p>Press CTRL/CMD button to select multiple options at once.</p>
+   
       <select data-placeholder="Begin typing a tag to filter..." multiple name="test">
         <option value=""></option>
-        <option>Python</option>
-        <option>Javascript</option>
-        <option>Coding</option>
-        <option>HTML</option>
-        <option>CSS</option>
-        <option>Flask</option>
-        <option>BackEnd</option>
-        <option>FrontEnd</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Coding">Coding</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="Flask">Flask</option>
+        <option value="BackEnd">BackEnd</option>
+        <option value="FrontEnd">FrontEnd</option>
+        <option value="Algorithm">Algorithm</option>
       </select>
 
-      <button type="submit">Create Gist</button>
+      <button type="submit">Create Snippet</button>
     </form>
-    <h2 id="gists-container">All gists</h2>
+    <h2 id="gists-container">All Snippets</h2>
       <ul class="gist-list" id="gistList">
         <!-- List of gists will be dynamically added here -->
-        
-        
       </ul>
   </div>
 
