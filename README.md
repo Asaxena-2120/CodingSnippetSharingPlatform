@@ -15,7 +15,7 @@ Project Logo or Screenshot (Optional: Add an image to showcase your project)
 The Code Snippet Sharing Platform is a web application that allows developers to share and discover code snippets with the community. It provides a centralized platform for users to showcase their coding skills, learn from others, and collaborate on projects.
 
 ### Main Features:
-Fetch and display code snippets from a free API.
+Fetch and display code snippets from a dummy json server.
 Allow users to search and filter code snippets by language or tags.
 Provide an interactive code editor for users to experiment with snippets.
 Support user interaction, such as liking and bookmarking snippets.

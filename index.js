@@ -1,23 +1,23 @@
 const toggleFormBtn = document.getElementById('toggleFormBtn');
-const gistForm = document.getElementById('gistForm');
-const gistList = document.getElementById('gistList');
+const snippetForm = document.getElementById('snippetForm');
+const snippetList = document.getElementById('snippetList');
 const searchInput = document.getElementById('search');
-
 const searchForm = document.getElementById('search-form');
-let gists =''
+let snippets =''
 
 toggleFormBtn.addEventListener('click', () => {
-  gistForm.classList.toggle('hidden');
+  snippetForm.classList.toggle('hidden');
 });
 
 fetch('http://localhost:3000/snippets')
 .then(resp=>resp.json())
-.then(snippets=>{
-  renderGists(snippets);
-  gists=snippets;
+.then(data=>{
+  snippets=data;
+  renderSnippets(data);
+  
 })
 
-gistForm.addEventListener('submit', (e)=>{
+snippetForm.addEventListener('submit', (e)=>{
   e.preventDefault();
 
   fetch('http://localhost:3000/snippets',{
@@ -27,42 +27,43 @@ gistForm.addEventListener('submit', (e)=>{
       "Accept": "application/json",
     },
     body: JSON.stringify({
-      title: e.target.gistTitle.value,
-      description: e.target.gistDescription.value,
-      code: e.target.gistCode.value,
-      language: e.target.gistLanguage.value,
+      title: e.target.snippetTitle.value,
+      description: e.target.snippetDescription.value,
+      code: e.target.snippetCode.value,
+      language: e.target.snippetLanguage.value,
       tags: [...(e.target.test).options].filter(option => option.selected).map(option => option.value)
     })
   })
   .then(response=>response.json())
   .then(((data)=>
     
-    {renderGist(data);
-      gistForm.classList.toggle('hidden');
+    {renderSnippet(data);
+      snippetForm.classList.toggle('hidden');
     }))
 })
 
-// Function to render the gists
-function renderGists(gists) {
-  gists.forEach((gist) => {
-    renderGist(gist)
+// Function to render the All Snippets
+function renderSnippets(snippets) {
+  snippets.forEach((snippet) => {
+    renderSnippet(snippet)
   });
 }
 
-function renderGist(gist){
+// Function to render the snippet
+function renderSnippet(snippet){
 
   const li = document.createElement('li');
 
   const header = document.createElement('h3')
-  header.innerHTML = `${gist.title}`
+  header.innerHTML = `${snippet.title}`
   li.append(header)
 
   const description = document.createElement('p')
-  description.innerHTML = `${gist.description}`
+  description.innerHTML = `${snippet.description}`
   li.append(description)
 
   const code = document.createElement('code')
-  code.innerHTML = `${gist.code}`
+  code.innerHTML = `${snippet.code}`
   code.contentEditable = "true"
   code.spellcheck = "false"
   li.append(code)
@@ -70,7 +71,7 @@ function renderGist(gist){
   const p = document.createElement('p')
   li.append(p)
   
-  gist.tags.forEach((tag)=>{
+  snippet.tags.forEach((tag)=>{
     const span = document.createElement('span')
     span.className = "span"
     span.innerHTML = `${tag}`
@@ -83,21 +84,21 @@ function renderGist(gist){
 
   const span3 = document.createElement('span')
   span3.className = "span"
-  span3.innerHTML = `${gist.language}`
+  span3.innerHTML = `${snippet.language}`
   li.append(span3)
   
   
-  gistList.appendChild(li);
-  gistForm.reset() //reset form 
+  snippetList.appendChild(li);
+  snippetForm.reset() //reset form 
    
 
 }
 
+//Search functionality
 searchInput.addEventListener("input", (e) => {
-
-  filtered_gists = gists.filter((gist)=> gist.tags.includes(e.target.value))
-  gistList.innerHTML=''
-  renderGists(filtered_gists)
+  filteredSnippets = snippets.filter((snippet)=> snippet.tags.map(tag=>tag.toLowerCase()).includes(e.target.value.toLowerCase()))
+  snippetList.innerHTML=''
+  renderSnippets(filteredSnippets)
 })
 
 

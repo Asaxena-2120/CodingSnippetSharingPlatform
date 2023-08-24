@@ -7,16 +7,16 @@
   <link rel="stylesheet" href="styles.css">
   
 
-  <title>Snippet Container</title>
+  <title>Snippet Sharing Platform</title>
 </head>
 <body>
   <nav class="navbar">
     <div class="container-nav">
-      <h1 class="logo">Snippet Container</h1>
+      <h1 class="logo">Snippet Sharing Platform</h1>
       <ul class="nav-links">
         <li>
             <form class="search-form">
-                <input id="search" type="text"  placeholder="search by tag..."/>
+                <input id="search" type="text"  placeholder="search by tag"/>
             </form>
         </li>
       </ul>
@@ -25,24 +25,24 @@
 
   <div class="container">
     <button id="toggleFormBtn">Create Snippet</button>
-    <form class="gist-form hidden" id="gistForm">
-      <label for="gistTitle">Snippet Title</label>
-      <input type="text" id="gistTitle" name="gistTitle" required>
+    <form class="snippet-form hidden" id="snippetForm">
+      <label for="snippetTitle">Snippet Title</label>
+      <input type="text" id="snippetTitle" name="snippetTitle" required>
 
-      <label for="gistDescription">Description</label>
-      <input type="text" id="gistDescription" name="gistDescription" >
+      <label for="snippetDescription">Description</label>
+      <input type="text" id="snippetDescription" name="snippetDescription" >
 
-      <label for="gistCode">Code</label>
-      <textarea type="text" id="gistCode" name="gistCode" rows="8" required></textarea>
+      <label for="snippetCode">Code</label>
+      <textarea type="text" id="snippetCode" name="snippetCode" rows="8" required></textarea>
 
-      <label for="gistLanguage">Snippet Language</label>
-      <input id="gistLanguage" name="gistLanguage"  required></input>
+      <label for="snippetLanguage">Snippet Language</label>
+      <input id="snippetLanguage" name="snippetLanguage"  required></input>
 
-      <label for="gistTags">Snippet Tags</label>
+      <label for="snippetTags">Snippet Tags</label>
       <p>Press CTRL/CMD button to select multiple options at once.</p>
    
-      <select data-placeholder="Begin typing a tag to filter..." multiple name="test">
-        <option value=""></option>
+      <select data-placeholder="Begin typing a tag to filter..." id="snippetTags" multiple name="test">
+        
         <option value="Python">Python</option>
         <option value="JavaScript">JavaScript</option>
         <option value="Coding">Coding</option>
@@ -56,9 +56,9 @@
 
       <button type="submit">Create Snippet</button>
     </form>
-    <h2 id="gists-container">All Snippets</h2>
-      <ul class="gist-list" id="gistList">
-        <!-- List of gists will be dynamically added here -->
+    <h2 id="snippets-container">All Snippets</h2>
+      <ul class="snippet-list" id="snippetList">
+        <!-- List of snippets will be dynamically added here -->
       </ul>
   </div>
 
