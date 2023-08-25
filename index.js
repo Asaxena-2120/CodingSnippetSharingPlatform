@@ -54,39 +54,56 @@ function renderSnippet(snippet){
 
   const li = document.createElement('li');
 
-  const header = document.createElement('h3')
-  header.innerHTML = `${snippet.title}`
-  li.append(header)
+  const header = document.createElement('h3');
+  header.innerHTML = `${snippet.title}`;
+  li.append(header);
 
-  const description = document.createElement('p')
-  description.innerHTML = `${snippet.description}`
-  li.append(description)
+  const description = document.createElement('p');
+  description.innerHTML = `${snippet.description}`;
+  li.append(description);
 
-  const code = document.createElement('code')
-  code.innerHTML = `${snippet.code}`
-  code.contentEditable = "true"
-  code.spellcheck = "false"
-  li.append(code)
+  const code = document.createElement('code');
+  code.innerHTML = `${snippet.code}`;
+  code.contentEditable = "true";
+  code.spellcheck = "false";
+  li.append(code);
 
-  const p = document.createElement('p')
-  li.append(p)
+  const p = document.createElement('p');
+  li.append(p);
   
   snippet.tags.forEach((tag)=>{
-    const span = document.createElement('span')
-    span.className = "span"
-    span.innerHTML = `${tag}`
-    li.append(span)
+    const span = document.createElement('span');
+    span.className = "span";
+    span.innerHTML = `${tag}`;
+    li.append(span);
   })
   
-  const span2 = document.createElement('span')
-  span2.innerHTML = '     '
-  li.append(span2)
+  const span2 = document.createElement('span');
+  span2.innerHTML = '     ';
+  li.append(span2);
 
-  const span3 = document.createElement('span')
-  span3.className = "span"
-  span3.innerHTML = `${snippet.language}`
-  li.append(span3)
+  const span3 = document.createElement('span');
+  span3.className = "span";
+  span3.innerHTML = `${snippet.language}`;
+  li.append(span3);
   
+  const likeButton = document.createElement('button');
+  likeButton.className = "likeButton";
+  
+  likeButton.innerHTML ="🤍"
+  likeButton.addEventListener('click',()=>{
+    console.log("clicked")
+    if(likeButton.innerHTML ==="🤍"){
+      console.log("empty")
+      likeButton.innerHTML="❤️";
+    }
+    else{
+      console.log("filled")
+      likeButton.innerHTML ="🤍";
+    }
+    
+  })
+  li.append(likeButton)
   
   snippetList.appendChild(li);
   snippetForm.reset() //reset form 

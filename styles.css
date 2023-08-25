@@ -126,3 +126,10 @@ code {
   display: block;
   background-color: white;
 }
+
+.likeButton {
+  background: #ccc;
+  background-color: #ccc(205, 194, 194);
+  border: 1px solid black;
+  
+}
